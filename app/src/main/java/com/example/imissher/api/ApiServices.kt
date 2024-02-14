@@ -1,7 +1,7 @@
 package com.example.imissher.api
 
-import com.example.imissher.repository.MovieDetailsResponse
-import com.example.imissher.repository.MoviesListResponse
+import com.example.imissher.model.MovieDetailsResponse
+import com.example.imissher.model.MoviesListResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

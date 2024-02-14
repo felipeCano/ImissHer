@@ -24,19 +24,19 @@ object ApiModule {
 
     @Provides
     @Singleton
-    fun ProvideBase() = BASE_URL
+    fun provideBase() = BASE_URL
 
     @Provides
     @Singleton
-    fun ConnectionTimeOut() = NETWORK_TIMEOUT
+    fun connectionTimeOut() = NETWORK_TIMEOUT
 
     @Provides
     @Singleton
-    fun ProvideGson(): Gson = GsonBuilder().setLenient().create()
+    fun provideGson(): Gson = GsonBuilder().setLenient().create()
 
     @Provides
     @Singleton
-    fun ProvideOKHttpClient() = if (BuildConfig.DEBUG) {
+    fun provideOKHttpClient() = if (BuildConfig.DEBUG) {
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS)
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
