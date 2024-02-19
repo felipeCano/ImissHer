@@ -34,9 +34,9 @@ object ApiModule {
     @Singleton
     fun provideGson(): Gson = GsonBuilder().setLenient().create()
 
-    @Provides
     @Singleton
-    fun provideOKHttpClient() = if (BuildConfig.DEBUG) {
+    @Provides
+    fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS)
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -52,7 +52,6 @@ object ApiModule {
                 .newBuilder()
                 .url(url)
                 .build()
-
             return@Interceptor chain.proceed(request)
         }
 
@@ -60,12 +59,15 @@ object ApiModule {
             .Builder()
             .addInterceptor(requestInterceptor)
             .addInterceptor(loggingInterceptor)
-    }else{
+            .build()
+    } else {
         OkHttpClient
             .Builder()
             .build()
     }
 
+    @Provides
+    @Singleton
     fun provideRetrofit(baseUrl : String, gson: Gson, client: OkHttpClient): ApiServices=
         Retrofit.Builder()
             .baseUrl(baseUrl)

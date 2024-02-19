@@ -27,12 +27,11 @@ class MoviesAdapter @Inject constructor() : RecyclerView.Adapter<MoviesAdapter.V
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.set(differ.currentList[position])
+        holder.setIsRecyclable(false)
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getItemCount(): Int = differ.currentList.size
 
     inner class ViewHolder(): RecyclerView.ViewHolder(binding.root){
         fun set(item: MoviesListResponse.Result){

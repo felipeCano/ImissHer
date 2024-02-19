@@ -16,8 +16,9 @@
         android:name=".ExampleApplication"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:label="IMissHer">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

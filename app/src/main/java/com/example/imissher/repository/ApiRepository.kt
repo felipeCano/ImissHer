@@ -7,7 +7,7 @@ import javax.inject.Inject
 @ActivityScoped
 class ApiRepository @Inject constructor(
     private val apiServices: ApiServices) {
-    fun getPopularMoviesList(page: Int) = apiServices.getPopularMoviesList(page)
+    fun getPopularMoviesList(apiKey: String,lenguage : String,page: Int) = apiServices.getPopularMoviesList(apiKey,lenguage,page)
 
     fun getMovieDetails(id: Int) = apiServices.getMovieDetail(id)
 }
