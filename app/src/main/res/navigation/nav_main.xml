@@ -20,7 +20,7 @@
         android:label="fragment_movies_details"
         tools:layout="@layout/fragment_movies_details" >
         <argument
-            android:name="moviesId"
+            android:name="movieId"
             app:argType="integer" />
     </fragment>
 </navigation>

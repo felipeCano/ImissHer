@@ -6,8 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.example.imissher.adapter.MoviesAdapter
 import com.example.imissher.databinding.FragmentMoviesBinding
 import com.example.imissher.model.MoviesListResponse
@@ -17,6 +18,7 @@ import retrofit2.Call
 import retrofit2.Response
 import javax.inject.Inject
 import retrofit2.Callback
+import androidx.navigation.fragment.findNavController
 
 @AndroidEntryPoint
 class MoviesFragment : Fragment() {
@@ -54,10 +56,15 @@ class MoviesFragment : Fragment() {
                                    layoutManager = LinearLayoutManager(requireContext())
                                    adapter = moviesAdapter
                                }
+                               moviesAdapter.setOnItemClickListener {
+                                   val direction = MoviesFragmentDirections.actionMoviesFragmentToMoviesDetailsFragment(it.id)
+                                   findNavController().navigate(direction)
+                               }
                            }
                        }
                        400->{
-                           Toast.makeText(requireContext(),"The resource you requested could not be found.",Toast.LENGTH_SHORT).show()
+                           Toast.makeText(requireContext(),"The resource you requested could not be found.",
+                               Toast.LENGTH_SHORT).show()
                        }
                        401->{
                            Toast.makeText(requireContext(),"Invalide Api",Toast.LENGTH_SHORT).show()
@@ -72,5 +79,9 @@ class MoviesFragment : Fragment() {
 
             })
         }
+    }
+
+     fun navController(): NavController? {
+        return view?.let { Navigation.findNavController(it) }
     }
 }
