@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#AEBDCA"
-    tools:context=".ui.MoviesDetailsFragment">
+    tools:context=".ui.view.detail.MoviesDetailsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/imgLayout"

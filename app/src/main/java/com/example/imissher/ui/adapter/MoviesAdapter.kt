@@ -1,4 +1,4 @@
-package com.example.imissher.adapter
+package com.example.imissher.ui.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import coil.load
 import coil.size.Scale
 import com.example.imissher.R
 import com.example.imissher.databinding.ItemMoviesBinding
-import com.example.imissher.model.MoviesListResponse
+import com.example.imissher.model.Movie
 import com.example.imissher.utils.Constants.POSTER_BASE_URL
 import javax.inject.Inject
 
@@ -34,7 +34,7 @@ class MoviesAdapter @Inject constructor() : RecyclerView.Adapter<MoviesAdapter.V
     override fun getItemCount(): Int = differ.currentList.size
 
     inner class ViewHolder(): RecyclerView.ViewHolder(binding.root){
-        fun set(item: MoviesListResponse.Result){
+        fun set(item: Movie){
             binding.apply {
                 tvMovieName.text = item.originalTitle
                 tvLang.text = item.originalLanguage
@@ -55,28 +55,27 @@ class MoviesAdapter @Inject constructor() : RecyclerView.Adapter<MoviesAdapter.V
         }
     }
 
-    private var onItemClickListener : ((MoviesListResponse.Result)-> Unit)? = null
+    private var onItemClickListener : ((Movie)-> Unit)? = null
 
-    fun setOnItemClickListener (listener: (MoviesListResponse.Result)-> Unit){
+    fun setOnItemClickListener (listener: (Movie)-> Unit){
         onItemClickListener = listener
     }
 
-    private val differentCallBack = object: DiffUtil.ItemCallback<MoviesListResponse.Result>(){
+    private val differentCallBack = object: DiffUtil.ItemCallback<Movie>(){
         override fun areItemsTheSame(
-            oldItem: MoviesListResponse.Result,
-            newItem: MoviesListResponse.Result
+            oldItem: Movie,
+            newItem: Movie
         ): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldItem: MoviesListResponse.Result,
-            newItem: MoviesListResponse.Result
+            oldItem: Movie,
+            newItem: Movie
         ): Boolean {
             return oldItem == newItem
         }
     }
 
     val differ = AsyncListDiffer(this, differentCallBack)
-
 }

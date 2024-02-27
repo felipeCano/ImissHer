@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/moviesFragment"
-        android:name="com.example.imissher.ui.MoviesFragment"
+        android:name="com.example.imissher.ui.view.movie.MoviesFragment"
         android:label="fragment_movies"
         tools:layout="@layout/fragment_movies" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/moviesDetailsFragment"
-        android:name="com.example.imissher.ui.MoviesDetailsFragment"
+        android:name="com.example.imissher.ui.view.detail.MoviesDetailsFragment"
         android:label="fragment_movies_details"
         tools:layout="@layout/fragment_movies_details" >
         <argument

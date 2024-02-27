@@ -73,6 +73,11 @@ dependencies {
 
     //Image loading
     implementation("io.coil-kt:coil:2.5.0")
+
+    //JavaRX
+    implementation("io.reactivex.rxjava2:rxjava:2.0.2")
+    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
+    implementation("com.squareup.retrofit2:adapter-rxjava2:2.3.0")
 }
 
 // Allow references to generated code
